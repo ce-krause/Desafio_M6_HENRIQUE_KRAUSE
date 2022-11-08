@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import construtores.MEC;
+import exceptions.ArrayInvalidoException;
 import exceptions.DadoInvalidoException;
 import universidade.Universidade;
 import universidade.filhas.Privada;
@@ -13,6 +14,8 @@ public class Principal {
         MEC mec = new MEC();
         Scanner scanner = new Scanner(System.in);
 
+        boolean continuar = true;
+
         System.out.println("\nDefina o tamanho:");
 
         int tamanho = scanner.nextInt();
@@ -21,31 +24,34 @@ public class Principal {
 
             scanner.close();
 
-            throw new DadoInvalidoException("\nTamanho inválido.");
+            throw new DadoInvalidoException("Tamanho inválido.");
 
         } else {
 
+            ArrayInvalidoException arrayInvalidoException = new ArrayInvalidoException("Array inválido. A quantidade de universidades instanciadas deve ser a mesma do tamanho do array.");
             Scanner scannerCidade = new Scanner(System.in);
             Scanner scannerEstado = new Scanner(System.in);
             Universidade[] universidades = new Universidade[tamanho];
 
-            while (true) {
+            while (continuar) {
 
                 System.out.println("\nDigite o índice:");
 
                 int indice = scanner.nextInt();
 
-                if (indice < 0 || indice > universidades.length) {
+                if (indice < 0 || indice >= universidades.length) {
 
                     scanner.close();
+                    scannerCidade.close();
+                    scannerEstado.close();
 
                     throw new DadoInvalidoException("Índice inválido.");
 
                 } else {
 
                     System.out.println("\n(1) Público");
-                    System.out.println("(2) Privado");
-                    System.out.println("\nDigite o tipo da universidade:");
+                    System.out.println("(2) Privado\n");
+                    System.out.println("Digite o tipo da universidade:");
 
                     int tipoUniversidade = scanner.nextInt();
 
@@ -63,6 +69,10 @@ public class Principal {
 
                         if (estado.isEmpty()) {
 
+                            scanner.close();
+                            scannerCidade.close();
+                            scannerEstado.close();
+
                             throw new DadoInvalidoException("Estado inválido.");
 
                         } else {
@@ -72,6 +82,10 @@ public class Principal {
                             String cidade = scannerCidade.nextLine();
 
                             if (cidade.isEmpty()) {
+
+                                scanner.close();
+                                scannerCidade.close();
+                                scannerEstado.close();
 
                                 throw new DadoInvalidoException("Cidade inválida.");
 
@@ -98,6 +112,10 @@ public class Principal {
 
                         if (mensalidade <= 0) {
 
+                            scanner.close();
+                            scannerCidade.close();
+                            scannerEstado.close();
+
                             throw new DadoInvalidoException("Mensalidade inválida.");
 
                         } else {
@@ -106,18 +124,64 @@ public class Principal {
 
                         }
 
+                    } else {
+
+                        scanner.close();
+                        scannerCidade.close();
+                        scannerEstado.close();
+
+                        throw new DadoInvalidoException("Tipo inválido.");
+
                     }
 
                 }
 
-            }
+                System.out.printf("\nUniversidade instanciada no índice %d.", indice);
+                System.out.println("\n(1) Sim");
+                System.out.println("(2) Não");
+                System.out.println("\nDeseja instanciar outra universidade?");
 
-            // scannerCidade.close();
-            // scannerEstado.close();
+                int opcao = scanner.nextInt();
+
+                if (opcao == 1) {
+
+                    continue;
+
+                } else if (opcao == 2) {
+
+                    scanner.close();
+                    scannerCidade.close();
+                    scannerEstado.close();
+                    
+                    continuar = false;
+
+                } else {
+
+                    scanner.close();
+                    scannerCidade.close();
+                    scannerEstado.close();
+
+                    throw new DadoInvalidoException("Opção inválida.");
+
+                }
+
+                try {
+
+                    mec.imprimeUniversidades(universidades);
+
+                } catch (NullPointerException nullPointerException) {
+
+                    throw arrayInvalidoException;
+
+                }
+
+                System.out.println("continuou");
+
+            }
 
         }
 
-        // scanner.close();
+        scanner.close();
 
     }
 
