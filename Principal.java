@@ -167,6 +167,7 @@ public class Principal {
             }
 
             mec.imprimeUniversidades(universidades);
+            mec.maisCara(universidades);
             mec.universidadesDoSul(universidades);
 
         }
