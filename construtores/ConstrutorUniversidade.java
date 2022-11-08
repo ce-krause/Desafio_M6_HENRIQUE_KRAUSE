@@ -32,7 +32,7 @@ public abstract class ConstrutorUniversidade {
 
     public void setDados() {
 
-        System.out.println("\nDefina o nome:");
+        System.out.println("\nDefina o nome: (Ex: Universidade)");
 
         this.nome = scannerNome.nextLine();
 
@@ -42,7 +42,7 @@ public abstract class ConstrutorUniversidade {
 
         }
 
-        System.out.println("\nDefina a quantidade de alunos:");
+        System.out.println("\nDefina a quantidade de alunos: (Ex: 100)");
 
         this.quantidadeAlunos = scanner.nextInt();
 
@@ -52,7 +52,7 @@ public abstract class ConstrutorUniversidade {
 
         }
 
-        System.out.println("\nDefina a quantidade de professores:");
+        System.out.println("\nDefina a quantidade de professores: (Ex: 10)");
 
         this.quantidadeProfessores = scanner.nextInt();
 

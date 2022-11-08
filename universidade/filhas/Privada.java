@@ -10,6 +10,14 @@ public class Privada extends Universidade {
 		this.valorMensalidade = vM;
 	}
 
+	@Override
+
+	public String toString() {
+
+		return "Universidade Privada";
+
+	}
+
 	public double getValorMensalidade() {
 		return valorMensalidade;
 	}
@@ -20,7 +28,7 @@ public class Privada extends Universidade {
 
 	public void imprimeInfo() {
 		super.imprimeInfo();
-		System.out.println("Valor da mensalidade: R$" + valorMensalidade);
+		System.out.printf("Valor da mensalidade: R$%f%n%n", valorMensalidade);
 	}
 
 }

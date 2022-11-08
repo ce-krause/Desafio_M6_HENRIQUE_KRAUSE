@@ -11,6 +11,14 @@ public class Publica extends Universidade {
 		cidade = c;
 	}
 
+	@Override
+
+	public String toString() {
+
+		return "Universidade Pública";
+
+	}
+
 	public String getEstado() {
 		return estado;
 	}
@@ -30,7 +38,7 @@ public class Publica extends Universidade {
 	public void imprimeInfo() {
 		super.imprimeInfo();
 		System.out.println("Estado: " + estado);
-		System.out.println("Cidade: " + cidade);
+		System.out.printf("Cidade: %s%n%n", cidade);
 	}
 
 }

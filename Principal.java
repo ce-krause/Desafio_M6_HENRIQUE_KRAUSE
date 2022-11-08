@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 import construtores.MEC;
-import exceptions.ArrayInvalidoException;
 import exceptions.DadoInvalidoException;
 import universidade.Universidade;
 import universidade.filhas.Privada;
@@ -16,7 +15,7 @@ public class Principal {
 
         boolean continuar = true;
 
-        System.out.println("\nDefina o tamanho:");
+        System.out.println("\nDefina o tamanho: (Ex: 10)");
 
         int tamanho = scanner.nextInt();
 
@@ -28,14 +27,13 @@ public class Principal {
 
         } else {
 
-            ArrayInvalidoException arrayInvalidoException = new ArrayInvalidoException("Array inválido. A quantidade de universidades instanciadas deve ser a mesma do tamanho do array.");
             Scanner scannerCidade = new Scanner(System.in);
             Scanner scannerEstado = new Scanner(System.in);
             Universidade[] universidades = new Universidade[tamanho];
 
             while (continuar) {
 
-                System.out.println("\nDigite o índice:");
+                System.out.println("\nDigite o índice: (Ex: 0)");
 
                 int indice = scanner.nextInt();
 
@@ -49,9 +47,9 @@ public class Principal {
 
                 } else {
 
+                    System.out.println("\nDigite o tipo da universidade:");
                     System.out.println("\n(1) Público");
                     System.out.println("(2) Privado\n");
-                    System.out.println("Digite o tipo da universidade:");
 
                     int tipoUniversidade = scanner.nextInt();
 
@@ -63,7 +61,7 @@ public class Principal {
                         int quantidadeAlunos = mec.getQuantidadeAlunos();
                         int quantidadeProfessores = mec.getQuantidadeProfessores();
 
-                        System.out.println("\nDefina o estado:");
+                        System.out.println("\nDefina o estado: (Ex: RS)");
 
                         String estado = scannerEstado.nextLine();
 
@@ -77,7 +75,7 @@ public class Principal {
 
                         } else {
 
-                            System.out.println("\nDefina a cidade:");
+                            System.out.println("\nDefina a cidade: (Ex: São Leopoldo)");
 
                             String cidade = scannerCidade.nextLine();
 
@@ -93,7 +91,7 @@ public class Principal {
 
                                 universidades[indice] = new Publica(nome, quantidadeAlunos, quantidadeProfessores,
                                         estado, cidade);
-                                        
+
                             }
 
                         }
@@ -106,7 +104,7 @@ public class Principal {
                         int quantidadeAlunos = mec.getQuantidadeAlunos();
                         int quantidadeProfessores = mec.getQuantidadeProfessores();
 
-                        System.out.println("\nDefina o valor da mensalidade:");
+                        System.out.println("\nDefina o valor da mensalidade: (Ex: 1000)");
 
                         double mensalidade = scanner.nextDouble();
 
@@ -120,7 +118,8 @@ public class Principal {
 
                         } else {
 
-                            universidades[indice] = new Privada(nome, quantidadeAlunos, quantidadeProfessores, mensalidade);
+                            universidades[indice] = new Privada(nome, quantidadeAlunos, quantidadeProfessores,
+                                    mensalidade);
 
                         }
 
@@ -137,9 +136,9 @@ public class Principal {
                 }
 
                 System.out.printf("\nUniversidade instanciada no índice %d.", indice);
+                System.out.println("\n\nDeseja instanciar outra universidade?");
                 System.out.println("\n(1) Sim");
                 System.out.println("(2) Não");
-                System.out.println("\nDeseja instanciar outra universidade?");
 
                 int opcao = scanner.nextInt();
 
@@ -152,7 +151,7 @@ public class Principal {
                     scanner.close();
                     scannerCidade.close();
                     scannerEstado.close();
-                    
+
                     continuar = false;
 
                 } else {
@@ -165,19 +164,10 @@ public class Principal {
 
                 }
 
-                try {
-
-                    mec.imprimeUniversidades(universidades);
-
-                } catch (NullPointerException nullPointerException) {
-
-                    throw arrayInvalidoException;
-
-                }
-
-                System.out.println("continuou");
-
             }
+
+            mec.imprimeUniversidades(universidades);
+            mec.universidadesDoSul(universidades);
 
         }
 
