@@ -1,14 +1,36 @@
 package construtores;
 
+import exceptions.ArrayInvalidoException;
 import universidade.Universidade;
 import universidade.filhas.Privada;
 import universidade.filhas.Publica;
 
 public class MEC extends ConstrutorUniversidade {
 
+    private int quantidadePublica;
+    private int quantidadePrivada;
+
+    public void setQuantidadePublica() {
+
+        this.quantidadePublica++;
+
+    }
+
+    public void setQuantidadePrivada() {
+
+        this.quantidadePrivada++;
+
+    }
+
     public void imprimeUniversidades(Universidade[] universidades) {
 
-        System.out.println("\nImprimindo dados das universidades instanciadas:\n");
+        this.getDivisoria();
+        this.getDivisoria();
+        this.getDivisoria();
+        this.getDivisoria();
+        this.getDivisoria();
+
+        System.out.println("Imprimindo dados das universidades instanciadas:\n");
 
         for (Universidade universidade : universidades) {
 
@@ -27,49 +49,76 @@ public class MEC extends ConstrutorUniversidade {
 
     public void maisCara(Universidade[] universidades) {
 
-        Privada universidadePrivada = null;
+        if (this.quantidadePrivada == 0) {
 
-        double mensalidade = 0;
+            throw new ArrayInvalidoException("Array inválido. Nenhuma universidade privada instanciada.");
 
-        System.out.println("\nImprimindo dados da universidade privada mais cara instanciada:\n");
+        } else {
 
-        for (Universidade universidade : universidades) {
+            Privada universidadePrivada = null;
 
-            if (universidade.toString().contains("Universidade Privada")) {
+            double mensalidade = 0;
 
-                universidadePrivada = (Privada) universidade;
+            System.out.println("Imprimindo dados da universidade privada mais cara instanciada:\n");
 
-                if (universidadePrivada.getValorMensalidade() > mensalidade) {
+            for (Universidade universidade : universidades) {
 
-                    mensalidade = universidadePrivada.getValorMensalidade();
+                if (universidade.toString().contains("Universidade Privada")) {
+
+                    universidadePrivada = (Privada) universidade;
+
+                    if (universidadePrivada.getValorMensalidade() > mensalidade) {
+
+                        mensalidade = universidadePrivada.getValorMensalidade();
+
+                    }
 
                 }
 
             }
 
-        }
+            universidadePrivada.imprimeInfo();
+            
+            System.out.println("---\n");
 
-        universidadePrivada.imprimeInfo();
+        }
 
     }
 
     public void universidadesDoSul(Universidade[] universidades) {
 
-        System.out.println("\nImprimindo dados das universidades públicas da região Sul instanciadas:\n");
+        if (this.quantidadePublica == 0) {
 
-        for (Universidade universidade : universidades) {
+            throw new ArrayInvalidoException("Array inválido. Nenhuma universidade pública instanciada.");
 
-            if (universidade.toString().contains("Universidade Pública")) {
+        } else {
 
-                Publica universidadePublica = (Publica) universidade;
+            int indice = 0;
 
-                if (universidadePublica.getEstado().contains("RS") || universidadePublica.getEstado().contains("SC")
-                        || universidadePublica.getEstado().contains("PR")) {
+            System.out.println("Imprimindo dados das universidades públicas da região Sul instanciadas:\n");
 
-                    universidadePublica.imprimeInfo();
+            for (Universidade universidade : universidades) {
+    
+                indice++;
 
+                if (universidade.toString().contains("Universidade Pública")) {
+    
+                    Publica universidadePublica = (Publica) universidade;
+                    String estado = universidadePublica.getEstado().toUpperCase();
+    
+                    if (estado.contains("RS") || estado.contains("SC")
+                            || estado.contains("PR")) {
+    
+                        universidadePublica.imprimeInfo();
+    
+                    } else {
+
+                        System.out.printf("Universidade do índice %d %n");
+
+                    }
+    
                 }
-
+    
             }
 
         }

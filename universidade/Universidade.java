@@ -36,7 +36,7 @@ public class Universidade {
 	}
 
 	public void imprimeInfo() {
-		System.out.printf("%nNome: %s%n", nome);
+		System.out.printf("Nome: %s%n", nome);
 		System.out.println("Quantidade de alunos: " + quantAlunos);
 		System.out.println("Quantidade de professores: " + quantProfessores);
 	}

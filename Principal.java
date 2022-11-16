@@ -33,7 +33,9 @@ public class Principal {
 
             while (continuar) {
 
-                System.out.println("\nDigite o índice: (Ex: 0)");
+                mec.getDivisoria();
+
+                System.out.println("Digite o índice: (Ex: 0)");
 
                 int indice = scanner.nextInt();
 
@@ -47,9 +49,9 @@ public class Principal {
 
                 } else {
 
-                    System.out.println("\nDigite o tipo da universidade:");
-                    System.out.println("\n(1) Público");
-                    System.out.println("(2) Privado\n");
+                    System.out.println("\nDigite o tipo da universidade:\n");
+                    System.out.println("(1) Pública");
+                    System.out.println("(2) Privada");
 
                     int tipoUniversidade = scanner.nextInt();
 
@@ -92,6 +94,8 @@ public class Principal {
                                 universidades[indice] = new Publica(nome, quantidadeAlunos, quantidadeProfessores,
                                         estado, cidade);
 
+                                mec.setQuantidadePublica();
+
                             }
 
                         }
@@ -121,6 +125,7 @@ public class Principal {
                             universidades[indice] = new Privada(nome, quantidadeAlunos, quantidadeProfessores,
                                     mensalidade);
 
+                            mec.setQuantidadePrivada();
                         }
 
                     } else {
@@ -135,8 +140,10 @@ public class Principal {
 
                 }
 
-                System.out.printf("\nUniversidade instanciada no índice %d.", indice);
-                System.out.println("\n\nDeseja instanciar outra universidade?");
+                mec.getDivisoria();
+
+                System.out.printf("Universidade instanciada no índice %d.%n%n", indice);
+                System.out.println("Deseja instanciar outra universidade?");
                 System.out.println("\n(1) Sim");
                 System.out.println("(2) Não");
 
@@ -167,6 +174,9 @@ public class Principal {
             }
 
             mec.imprimeUniversidades(universidades);
+
+            System.out.println("---\n");
+            
             mec.maisCara(universidades);
             mec.universidadesDoSul(universidades);
 

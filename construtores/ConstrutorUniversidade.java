@@ -64,4 +64,10 @@ public abstract class ConstrutorUniversidade {
 
     }
 
+    public void getDivisoria() {
+
+        System.out.println("\n---\n");
+
+    }
+
 }
