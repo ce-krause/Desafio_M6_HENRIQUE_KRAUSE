@@ -94,7 +94,11 @@ public class Principal {
                                 universidades[indice] = new Publica(nome, quantidadeAlunos, quantidadeProfessores,
                                         estado, cidade);
 
-                                mec.setQuantidadePublica();
+                                if (estado.contains("RS") || estado.contains("SC") || estado.contains("PR")) {
+
+                                    mec.setQuantidadePublicaSul();
+
+                                }
 
                             }
 
@@ -173,11 +177,11 @@ public class Principal {
 
             }
 
-            mec.imprimeUniversidades(universidades);
+            // mec.imprimeUniversidades(universidades);
 
             System.out.println("---\n");
-            
-            mec.maisCara(universidades);
+
+            // mec.maisCara(universidades);
             mec.universidadesDoSul(universidades);
 
         }

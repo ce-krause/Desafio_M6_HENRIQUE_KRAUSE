@@ -7,12 +7,12 @@ import universidade.filhas.Publica;
 
 public class MEC extends ConstrutorUniversidade {
 
-    private int quantidadePublica;
+    private int quantidadePublicaSul;
     private int quantidadePrivada;
 
-    public void setQuantidadePublica() {
+    public void setQuantidadePublicaSul() {
 
-        this.quantidadePublica++;
+        this.quantidadePublicaSul++;
 
     }
 
@@ -87,19 +87,15 @@ public class MEC extends ConstrutorUniversidade {
 
     public void universidadesDoSul(Universidade[] universidades) {
 
-        if (this.quantidadePublica == 0) {
+        if (this.quantidadePublicaSul == 0) {
 
-            throw new ArrayInvalidoException("Array inválido. Nenhuma universidade pública instanciada.");
+            throw new ArrayInvalidoException("Array inválido. Nenhuma universidade pública da região sul instanciada.");
 
         } else {
-
-            int indice = 0;
 
             System.out.println("Imprimindo dados das universidades públicas da região Sul instanciadas:\n");
 
             for (Universidade universidade : universidades) {
-    
-                indice++;
 
                 if (universidade.toString().contains("Universidade Pública")) {
     
@@ -111,10 +107,6 @@ public class MEC extends ConstrutorUniversidade {
     
                         universidadePublica.imprimeInfo();
     
-                    } else {
-
-                        System.out.printf("Universidade do índice %d %n");
-
                     }
     
                 }
