@@ -53,15 +53,15 @@ public class Principal {
                     System.out.println("(1) Pública");
                     System.out.println("(2) Privada");
 
-                    int tipoUniversidade = scanner.nextInt();
+                    int tipo = scanner.nextInt();
 
-                    if (tipoUniversidade == 1) {
+                    if (tipo == 1) {
 
                         mec.setDados();
 
                         String nome = mec.getNome();
-                        int quantidadeAlunos = mec.getQuantidadeAlunos();
-                        int quantidadeProfessores = mec.getQuantidadeProfessores();
+                        int alunos = mec.getAlunos();
+                        int professores = mec.getProfessores();
 
                         System.out.println("\nDefina o estado: (Ex: RS)");
 
@@ -91,12 +91,12 @@ public class Principal {
 
                             } else {
 
-                                universidades[indice] = new Publica(nome, quantidadeAlunos, quantidadeProfessores,
+                                universidades[indice] = new Publica(nome, alunos, professores,
                                         estado, cidade);
 
                                 if (estado.contains("RS") || estado.contains("SC") || estado.contains("PR")) {
 
-                                    mec.setQuantidadePublicaSul();
+                                    mec.setPublicasSul();
 
                                 }
 
@@ -104,13 +104,13 @@ public class Principal {
 
                         }
 
-                    } else if (tipoUniversidade == 2) {
+                    } else if (tipo == 2) {
 
                         mec.setDados();
 
                         String nome = mec.getNome();
-                        int quantidadeAlunos = mec.getQuantidadeAlunos();
-                        int quantidadeProfessores = mec.getQuantidadeProfessores();
+                        int alunos = mec.getAlunos();
+                        int professores = mec.getProfessores();
 
                         System.out.println("\nDefina o valor da mensalidade: (Ex: 1000)");
 
@@ -126,10 +126,10 @@ public class Principal {
 
                         } else {
 
-                            universidades[indice] = new Privada(nome, quantidadeAlunos, quantidadeProfessores,
+                            universidades[indice] = new Privada(nome, alunos, professores,
                                     mensalidade);
 
-                            mec.setQuantidadePrivada();
+                            mec.setPrivadas();
                         }
 
                     } else {
@@ -177,11 +177,11 @@ public class Principal {
 
             }
 
-            // mec.imprimeUniversidades(universidades);
+            mec.imprimeUniversidades(universidades);
 
             System.out.println("---\n");
 
-            // mec.maisCara(universidades);
+            mec.maisCara(universidades);
             mec.universidadesDoSul(universidades);
 
         }

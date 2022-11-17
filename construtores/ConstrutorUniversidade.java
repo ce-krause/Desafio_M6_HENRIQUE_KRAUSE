@@ -7,7 +7,7 @@ import exceptions.DadoInvalidoException;
 public abstract class ConstrutorUniversidade {
 
     private String nome;
-    private int quantidadeAlunos, quantidadeProfessores;
+    private int alunos, professores;
 
     Scanner scanner = new Scanner(System.in);
     Scanner scannerNome = new Scanner(System.in);
@@ -18,15 +18,15 @@ public abstract class ConstrutorUniversidade {
 
     }
 
-    public int getQuantidadeAlunos() {
+    public int getAlunos() {
 
-        return this.quantidadeAlunos;
+        return this.alunos;
 
     }
 
-    public int getQuantidadeProfessores() {
+    public int getProfessores() {
 
-        return this.quantidadeProfessores;
+        return this.professores;
 
     }
 
@@ -44,9 +44,9 @@ public abstract class ConstrutorUniversidade {
 
         System.out.println("\nDefina a quantidade de alunos: (Ex: 100)");
 
-        this.quantidadeAlunos = scanner.nextInt();
+        this.alunos = scanner.nextInt();
 
-        if (this.quantidadeAlunos < 0) {
+        if (this.alunos < 0) {
 
             throw new DadoInvalidoException("Quantidade de alunos inválida.");
 
@@ -54,9 +54,9 @@ public abstract class ConstrutorUniversidade {
 
         System.out.println("\nDefina a quantidade de professores: (Ex: 10)");
 
-        this.quantidadeProfessores = scanner.nextInt();
+        this.professores = scanner.nextInt();
 
-        if (this.quantidadeProfessores < 0) {
+        if (this.professores < 0) {
 
             throw new DadoInvalidoException("Quantidade de professores inválida.");
 

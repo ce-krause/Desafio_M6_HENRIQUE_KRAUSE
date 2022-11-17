@@ -7,18 +7,18 @@ import universidade.filhas.Publica;
 
 public class MEC extends ConstrutorUniversidade {
 
-    private int quantidadePublicaSul;
-    private int quantidadePrivada;
+    private int publicasSul;
+    private int privadas;
 
-    public void setQuantidadePublicaSul() {
+    public void setPublicasSul() {
 
-        this.quantidadePublicaSul++;
+        this.publicasSul++;
 
     }
 
-    public void setQuantidadePrivada() {
+    public void setPrivadas() {
 
-        this.quantidadePrivada++;
+        this.privadas++;
 
     }
 
@@ -49,7 +49,7 @@ public class MEC extends ConstrutorUniversidade {
 
     public void maisCara(Universidade[] universidades) {
 
-        if (this.quantidadePrivada == 0) {
+        if (this.privadas == 0) {
 
             throw new ArrayInvalidoException("Array inválido. Nenhuma universidade privada instanciada.");
 
@@ -78,7 +78,7 @@ public class MEC extends ConstrutorUniversidade {
             }
 
             universidadePrivada.imprimeInfo();
-            
+
             System.out.println("---\n");
 
         }
@@ -87,7 +87,7 @@ public class MEC extends ConstrutorUniversidade {
 
     public void universidadesDoSul(Universidade[] universidades) {
 
-        if (this.quantidadePublicaSul == 0) {
+        if (this.publicasSul == 0) {
 
             throw new ArrayInvalidoException("Array inválido. Nenhuma universidade pública da região sul instanciada.");
 
@@ -98,19 +98,19 @@ public class MEC extends ConstrutorUniversidade {
             for (Universidade universidade : universidades) {
 
                 if (universidade.toString().contains("Universidade Pública")) {
-    
+
                     Publica universidadePublica = (Publica) universidade;
                     String estado = universidadePublica.getEstado().toUpperCase();
-    
+
                     if (estado.contains("RS") || estado.contains("SC")
                             || estado.contains("PR")) {
-    
+
                         universidadePublica.imprimeInfo();
-    
+
                     }
-    
+
                 }
-    
+
             }
 
         }
